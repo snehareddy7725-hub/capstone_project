@@ -1,0 +1,34 @@
+# ============================================================
+# Zepto Capstone Project — unified requirements
+# One shared virtual environment for all three modules.
+# Version minimums (>=) are used throughout rather than exact
+# pins, so pip can resolve mutually compatible versions across
+# modules instead of locking in a combination that later
+# conflicts (this is what caused the ChromaDB/NumPy crash in
+# Module 3 and the langgraph/langchain-core mismatch).
+# ============================================================
+
+# ---------------- Module 1: Data Pipeline (web scraper) ----------------
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+pandas>=2.0.0
+# Note: sqlite3 is part of the Python standard library — do NOT
+# add it here, pip install will fail trying to fetch it.
+
+# ---------------- Module 2: Analytics Pipeline (Titanic) ----------------
+seaborn>=0.13.0
+numpy>=1.26.0
+matplotlib>=3.8.0
+scipy>=1.11.0
+scikit-learn>=1.3.0
+imbalanced-learn>=0.12.0
+joblib>=1.3.0
+
+# ---------------- Module 3: Support Assistant (RAG) ----------------
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+fastapi[standard]>=0.110.0
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+langgraph>=0.2.0
+uvicorn>=0.27.0
