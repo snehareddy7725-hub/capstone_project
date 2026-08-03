@@ -1,32 +1,31 @@
-# Support Assistant Module
+# Zepto Data Engineering & Analytics Project
 
-## Setup
-1. Install dependencies: `pip install -r requirements.txt`
-2. Run the application: `uvicorn main:app --host 0.0.0.0 --port 8000 --reload`
+This repository contains three complete modules for a data engineering and analytics pipeline.
 
-## Architecture
-The RAG pipeline consists of four stages:
+## Modules
 
-### 1. Ingestion
-- Location: `load_documents()` function
-- Loads 8 policy documents from `/docs` directory
-- Each document is a separate text file with Zepto policies
+1. **Data Pipeline** (`/data_pipeline`): Web scraping, data cleaning, ETL, and SQL database
+2. **Analytics Pipeline** (`/analytics`): EDA, data profiling, modeling, and evaluation
+3. **Support Assistant** (`/support_assistant`): RAG-based customer support system
 
-### 2. Embedding
-- Location: `create_embeddings()` function
-- Uses `all-MiniLM-L6-v2` model from sentence-transformers
-- Embeds each document chunk and stores in ChromaDB
+## Quick Start
 
-### 3. Retrieval
-- Location: `retrieve_and_answer()` node in LangGraph
-- Uses ChromaDB similarity search with cosine distance
-- Retrieves top-3 most relevant chunks for policy queries
+```bash
+# Clone repository
+git clone <repository-url>
+cd <repository-name>
 
-### 4. Generation
-- Location: `retrieve_and_answer()` and `direct_answer()` nodes
-- MOCK_LLM=1 (default): Uses deterministic template responses
-- MOCK_LLM=0: Uses Groq API for real LLM responses
+# Module 1 - Data Pipeline
+cd data_pipeline
+pip install -r requirements.txt
+python scrape_books.py
 
-## Example Queries
+# Module 2 - Analytics Pipeline
+cd ../analytics
+pip install -r requirements.txt
+jupyter notebook 01_eda.ipynb
 
-### Policy Query (triggers retrieval)
+# Module 3 - Support Assistant
+cd ../support_assistant
+pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000
