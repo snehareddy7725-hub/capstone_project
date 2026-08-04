@@ -186,7 +186,8 @@ def setup_chromadb():
             name="zepto_policies",
             embedding_function=embedding_functions.SentenceTransformerEmbeddingFunction(
                 model_name="all-MiniLM-L6-v2"
-            )
+            ),
+            metadata={"hnsw:space": "cosine"}
         )
 
         # Load and embed documents
