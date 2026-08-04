@@ -13,9 +13,11 @@ The RAG pipeline consists of four stages:
 - Each document is a separate text file with Zepto policies
 
 ### 2. Embedding
-- Location: `create_embeddings()` function
-- Uses `all-MiniLM-L6-v2` model from sentence-transformers
-- Embeds each document chunk and stores in ChromaDB
+- Location: `setup_chromadb()` function
+- Uses `all-MiniLM-L6-v2` model from sentence-transformers, wired in via ChromaDB's
+  `SentenceTransformerEmbeddingFunction`
+- Embedding happens automatically when documents are added to the collection
+  (`collection.add(...)`) — there is no separate embedding step to call
 
 ### 3. Retrieval
 - Location: `retrieve_and_answer()` node in LangGraph
